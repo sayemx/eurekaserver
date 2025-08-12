@@ -1,0 +1,33 @@
+ 
+logging:
+  pattern:
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){yellow} %clr(%-5level){blue} %clr([%thread]){magenta} %clr(%logger{36}){cyan} - %msg%n"
+ 
+server:
+  port: 8070
+spring:
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+  application:
+    name: eurekaserver
+    
+    
+build:
+  version: 3.0
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
